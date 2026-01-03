@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Time Off | Admin</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-dark text-light">
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark bg-dark px-4">
+  <span class="navbar-brand">Company Logo</span>
+  <ul class="nav">
+    <li class="nav-item"><a class="nav-link text-light" href="After Sign in.html">Employees</a></li>
+    <li class="nav-item"><a class="nav-link text-light" href="#" onclick="navigateToAttendance()">Attendance</a></li>
+    <li class="nav-item"><a class="nav-link text-light active">Time Off</a></li>
+  </ul>
+  <div class="ms-auto">
+    <button class="btn btn-outline-light btn-sm" onclick="logout()">Logout</button>
+  </div>
+</nav>
+
+<div class="container mt-4">
+
+  <!-- SUB NAV -->
+  <div class="d-flex align-items-center mb-3">
+    <span class="text-light me-3">Time Off Management</span>
+    <button class="btn btn-primary ms-3" data-bs-toggle="collapse" data-bs-target="#formBox">
+      NEW
+    </button>
+
+    <input type="text" class="form-control ms-3 w-25" placeholder="Search">
+  </div>
+
+  <!-- INPUT FORM -->
+  <div id="formBox" class="collapse mb-4">
+    <div class="card bg-secondary p-3">
+      <div class="row g-2">
+        <div class="col-md-2">
+          <input type="text" id="empName" class="form-control" placeholder="Employee Name">
+        </div>
+        <div class="col-md-2">
+          <input type="date" id="startDate" class="form-control">
+        </div>
+        <div class="col-md-2">
+          <input type="date" id="endDate" class="form-control">
+        </div>
+        <div class="col-md-2">
+          <select id="leaveType" class="form-select">
+            <option value="">Time Off Type</option>
+            <option>Paid Time Off</option>
+            <option>Sick Time Off</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-dark w-100" onclick="addLeave()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEAVE SUMMARY -->
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <h6 class="text-info">Paid Time Off</h6>
+      <p>Days Available</p>
+    </div>
+    <div class="col-md-6">
+      <h6 class="text-info">Sick Time Off</h6>
+      <p>Days Available</p>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <table class="table table-dark table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Time Off Type</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody id="leaveTable">
+      <!-- DATA INSERTED HERE -->
+    </tbody>
+  </table>
+
+</div>
+
+<script>
+function addLeave() {
+  const empName = document.getElementById("empName").value;
+  const startDate = document.getElementById("startDate").value;
+  const endDate = document.getElementById("endDate").value;
+  const leaveType = document.getElementById("leaveType").value;
+
+  if (!empName || !startDate || !endDate || !leaveType) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  const table = document.getElementById("leaveTable");
+  const row = table.insertRow();
+  
+  row.innerHTML = `
+    <td>${empName}</td>
+    <td>${startDate}</td>
+    <td>${endDate}</td>
+    <td>${leaveType}</td>
+    <td><span class="badge bg-warning">Pending</span></td>
+    <td>
+      <button class="btn btn-success btn-sm me-1" onclick="approveLeave(this)">Approve</button>
+      <button class="btn btn-danger btn-sm" onclick="rejectLeave(this)">Reject</button>
+    </td>
+  `;
+
+  // Clear form
+  document.getElementById("empName").value = "";
+  document.getElementById("startDate").value = "";
+  document.getElementById("endDate").value = "";
+  document.getElementById("leaveType").value = "";
+  
+  // Collapse form
+  const formBox = document.getElementById("formBox");
+  const collapse = new bootstrap.Collapse(formBox);
+  collapse.hide();
+}
+
+function approveLeave(btn) {
+  const row = btn.closest('tr');
+  const statusCell = row.cells[4];
+  statusCell.innerHTML = '<span class="badge bg-success">Approved</span>';
+  btn.parentElement.innerHTML = '<span class="text-success">Approved</span>';
+}
+
+function rejectLeave(btn) {
+  const row = btn.closest('tr');
+  const statusCell = row.cells[4];
+  statusCell.innerHTML = '<span class="badge bg-danger">Rejected</span>';
+  btn.parentElement.innerHTML = '<span class="text-danger">Rejected</span>';
+}
+</script>
+<script src="navigation.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
