@@ -111,9 +111,9 @@ body {
   <span class="navbar-brand">Company Logo</span>
 
   <ul class="nav">
-    <li class="nav-item"><a class="nav-link text-light">Employees</a></li>
-    <li class="nav-item"><a class="nav-link text-light">Attendance</a></li>
-    <li class="nav-item"><a class="nav-link text-light">Time Off</a></li>
+    <li class="nav-item"><a class="nav-link text-light" href="After Sign in.html">Employees</a></li>
+    <li class="nav-item"><a class="nav-link text-light" href="#" onclick="navigateToAttendance()">Attendance</a></li>
+    <li class="nav-item"><a class="nav-link text-light" href="Timeoff.html">Time Off</a></li>
   </ul>
 
   <div class="ms-auto d-flex align-items-center position-relative">
@@ -125,8 +125,8 @@ body {
 
     <!-- Dropdown -->
     <div class="avatar-dropdown" id="avatarDropdown">
-      <a href="#">My Profile</a>
-      <a href="#">Logout</a>
+      <a href="My Profile for Admin.html">My Profile</a>
+      <a href="#" onclick="logout()">Logout</a>
     </div>
   </div>
 </nav>
@@ -189,6 +189,8 @@ document.querySelectorAll('.employee-card').forEach(card => {
   };
 });
 </script>
+
+<script src="navigation.js"></script>
 
 </body>
 </html>

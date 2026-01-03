@@ -11,6 +11,19 @@
 
 <body class="bg-dark text-light">
 
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark bg-dark px-4">
+  <span class="navbar-brand">Company Logo</span>
+  <ul class="nav">
+    <li class="nav-item"><a class="nav-link text-light" href="After Sign in.html">Employees</a></li>
+    <li class="nav-item"><a class="nav-link text-light active">Attendance</a></li>
+    <li class="nav-item"><a class="nav-link text-light" href="Timeoff.html">Time Off</a></li>
+  </ul>
+  <div class="ms-auto">
+    <button class="btn btn-outline-light btn-sm" onclick="logout()">Logout</button>
+  </div>
+</nav>
+
 <div class="container mt-4">
 
   <!-- NAV TABS -->
@@ -89,6 +102,21 @@
 
 </div>
 
-<script src="script.js"></script>
+<script>
+function showAdmin() {
+  document.getElementById("adminView").style.display = "block";
+  document.getElementById("employeeView").style.display = "none";
+  document.querySelectorAll(".nav-link").forEach(link => link.classList.remove("active"));
+  event.target.classList.add("active");
+}
+
+function showEmployee() {
+  document.getElementById("adminView").style.display = "none";
+  document.getElementById("employeeView").style.display = "block";
+  document.querySelectorAll(".nav-link").forEach(link => link.classList.remove("active"));
+  event.target.classList.add("active");
+}
+</script>
+<script src="navigation.js"></script>
 </body>
 </html>

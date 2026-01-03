@@ -11,6 +11,19 @@
 
 <body class="bg-dark text-light">
 
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark bg-dark px-4">
+  <span class="navbar-brand">Company Logo</span>
+  <ul class="nav">
+    <li class="nav-item"><a class="nav-link text-light" href="After Sign in.html">Employees</a></li>
+    <li class="nav-item"><a class="nav-link text-light active">Attendance</a></li>
+    <li class="nav-item"><a class="nav-link text-light" href="Timeoff.html">Time Off</a></li>
+  </ul>
+  <div class="ms-auto">
+    <button class="btn btn-outline-light btn-sm" onclick="logout()">Logout</button>
+  </div>
+</nav>
+
 <div class="container mt-4">
 
   <h4 class="mb-4">Employee Attendance</h4>
@@ -57,6 +70,38 @@
 
 </div>
 
-<script src="script.js"></script>
+<script>
+function addAttendance() {
+  const date = document.getElementById("date").value;
+  const checkIn = document.getElementById("checkIn").value;
+  const checkOut = document.getElementById("checkOut").value;
+  const workHours = document.getElementById("workHours").value;
+  const extraHours = document.getElementById("extraHours").value;
+
+  if (!date || !checkIn || !checkOut) {
+    alert("Please fill in date, check in, and check out times");
+    return;
+  }
+
+  const table = document.getElementById("attendanceTable");
+  const row = table.insertRow();
+  
+  row.innerHTML = `
+    <td>${date}</td>
+    <td>${checkIn}</td>
+    <td>${checkOut}</td>
+    <td>${workHours}</td>
+    <td>${extraHours}</td>
+  `;
+
+  // Clear form
+  document.getElementById("date").value = "";
+  document.getElementById("checkIn").value = "";
+  document.getElementById("checkOut").value = "";
+  document.getElementById("workHours").value = "";
+  document.getElementById("extraHours").value = "";
+}
+</script>
+<script src="navigation.js"></script>
 </body>
 </html>
