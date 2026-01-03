@@ -1,3 +1,13 @@
+import mysql.connector
+
+def get_db_connection():
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="Dhy@na2411",
+        database="HRMS"
+    )
+    return conn
 from flask import Flask, request, redirect, url_for, flash, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
