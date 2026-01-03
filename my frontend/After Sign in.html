@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Employee Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+/* Navbar avatar */
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Dropdown */
+.avatar-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: #2b2b2b;
+  border-radius: 6px;
+  width: 160px;
+  display: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  z-index: 1000;
+}
+
+.avatar-dropdown a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+}
+
+.avatar-dropdown a:hover {
+  background: #3b3b3b;
+}
+
+/* Employee card */
+.employee-card {
+  background: #2b2b2b;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.card-header {
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Employee name panel */
+.employee-panel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.employee-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.employee-name-panel {
+  font-weight: 500;
+}
+
+/* Status indicator */
+.status-indicator {
+  width: 20px;
+  height: 20px;
+}
+
+.green-dot {
+  width: 14px;
+  height: 14px;
+  background: #00ff00;
+  border-radius: 50%;
+}
+
+.yellow-dot {
+  width: 14px;
+  height: 14px;
+  background: #ffc107;
+  border-radius: 50%;
+}
+
+.airplane {
+  font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark px-4 position-relative">
+  <span class="navbar-brand">Company Logo</span>
+
+  <ul class="nav">
+    <li class="nav-item"><a class="nav-link text-light">Employees</a></li>
+    <li class="nav-item"><a class="nav-link text-light">Attendance</a></li>
+    <li class="nav-item"><a class="nav-link text-light">Time Off</a></li>
+  </ul>
+
+  <div class="ms-auto d-flex align-items-center position-relative">
+    <button class="btn btn-primary me-2">NEW</button>
+    <input class="form-control me-2" placeholder="Search">
+
+    <!-- Avatar -->
+    <img src="https://via.placeholder.com/40" class="avatar" id="avatarBtn">
+
+    <!-- Dropdown -->
+    <div class="avatar-dropdown" id="avatarDropdown">
+      <a href="#">My Profile</a>
+      <a href="#">Logout</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Employees -->
+<div class="container mt-4">
+  <div class="row g-3">
+
+    <div class="col-md-4">
+      <div class="employee-card">
+        <div class="card-header">
+          <div class="employee-panel">
+            <img src="https://via.placeholder.com/45" class="employee-img">
+            <span class="employee-name-panel">Employee Name</span>
+          </div>
+          <span class="status-indicator"></span>
+        </div>
+
+        <div class="text-center mt-3">
+          <button class="btn btn-success check-in">Check IN</button>
+          <button class="btn btn-warning check-out">Check Out</button>
+          <button class="btn btn-info leave">Leave</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ===== Avatar dropdown =====
+const avatarBtn = document.getElementById("avatarBtn");
+const avatarDropdown = document.getElementById("avatarDropdown");
+
+avatarBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  avatarDropdown.style.display =
+    avatarDropdown.style.display === "block" ? "none" : "block";
+});
+
+document.addEventListener("click", () => {
+  avatarDropdown.style.display = "none";
+});
+
+// ===== Status Indicator Logic =====
+document.querySelectorAll('.employee-card').forEach(card => {
+  const indicator = card.querySelector('.status-indicator');
+  indicator.innerHTML = "";
+
+  card.querySelector('.check-in').onclick = () => {
+    indicator.innerHTML = '<div class="green-dot"></div>';
+  };
+
+  card.querySelector('.check-out').onclick = () => {
+    indicator.innerHTML = '<div class="yellow-dot"></div>';
+  };
+
+  card.querySelector('.leave').onclick = () => {
+    indicator.innerHTML = '<span class="airplane">✈️</span>';
+  };
+});
+</script>
+
+</body>
+</html>
