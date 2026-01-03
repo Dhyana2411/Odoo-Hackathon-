@@ -1,0 +1,110 @@
+body {
+  background: #0b0b0b;
+  color: white;
+  font-family: Segoe UI;
+}
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-box {
+  width: 380px;
+  padding: 25px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.auth-box.large {
+  width: 450px;
+}
+
+.form-control {
+  background: transparent;
+  color: white;
+  border: 1px solid #888;
+}
+
+.form-control:focus {
+  background: transparent;
+  color: white;
+  border-color: #bb6bd9;
+  box-shadow: none;
+}
+
+.logo-box {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.logo-box img {
+  width: 100px;
+}
+
+.password-container {
+  position: relative;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px;
+  box-sizing: border-box;
+}
+
+.password-container .show-pass {
+  position: absolute;
+  top: 50%;
+  right: 100px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #bb6bd9;
+  font-weight: bold;
+  user-select: none;
+}
+
+
+.btn-purple {
+  background: #bb6bd9;
+  color: white;
+  border: none;
+}
+
+.btn-purple:hover {
+  background: #a24fc6;
+}
+
+a {
+  color: #bb6bd9;
+  text-decoration: none;
+}
+
+/* ROLE BUTTONS */
+.role-box {
+  display: flex;
+  gap: 10px;
+}
+
+.role-btn {
+  flex: 1;
+  padding: 10px;
+  background: transparent;
+  color: white;
+  border: 1px solid #bb6bd9;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.role-btn:hover {
+  background: rgba(187,107,217,0.2);
+}
+
+.role-btn.active {
+  background: #bb6bd9;
+  color: black;
+  font-weight: bold;
+}

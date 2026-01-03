@@ -1,0 +1,1 @@
+web: cd dayflow_flask && gunicorn app:app

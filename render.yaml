@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: hrms-dayflow
+    env: python
+    buildCommand: "pip install -r dayflow_flask/requirements.txt"
+    startCommand: "cd dayflow_flask && gunicorn app:app"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Employee Profile</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+    background:#0f0f0f;
+    color:#fff;
+    font-family: Arial, sans-serif;
+}
+.navbar{
+    background:#161616;
+    border-bottom:1px solid #333;
+}
+.navbar a{ color:#ccc!important; margin-right:15px; }
+
+.card-box{
+    background:#161616;
+    border:1px solid #333;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:15px;
+}
+.avatar{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:#6b2d2d;
+}
+.form-control, .form-select{
+    background:#0f0f0f;
+    border:1px solid #333;
+    color:#fff;
+}
+.form-control:focus, .form-select:focus{
+    background:#0f0f0f;
+    color:#fff;
+    border-color:#666;
+    box-shadow:none;
+}
+.nav-tabs .nav-link{
+    color:#aaa;
+}
+.nav-tabs .nav-link.active{
+    background:#0f0f0f;
+    color:#fff;
+    border-color:#333;
+}
+label{
+    font-size:14px;
+    color:#bbb;
+}
+.section-title{
+    font-size:15px;
+    margin-bottom:10px;
+    border-bottom:1px solid #333;
+    padding-bottom:5px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg px-4">
+    <a class="navbar-brand text-white">Company Logo</a>
+    <div class="navbar-nav">
+        <a class="nav-link" href="After Sign in.html">Employees</a>
+        <a class="nav-link" href="#" onclick="navigateToAttendance()">Attendance</a>
+        <a class="nav-link" href="Timeoff.html">Time Off</a>
+    </div>
+    <div class="ms-auto">
+        <button class="btn btn-outline-light btn-sm" onclick="logout()">Logout</button>
+    </div>
+</nav>
+
+<div class="container mt-4">
+<div class="row">
+
+<!-- LEFT -->
+<div class="col-md-8">
+
+<!-- PROFILE -->
+<div class="card-box">
+<h5>My Profile</h5>
+<hr>
+
+<div class="d-flex gap-4">
+    <div class="avatar"></div>
+
+    <div class="flex-grow-1">
+        <label>Employee Name</label>
+        <input class="form-control mb-2">
+
+        <label>Login ID</label>
+        <input class="form-control mb-2">
+
+        <label>Email (Official)</label>
+        <input class="form-control mb-2">
+
+        <label>Mobile</label>
+        <input class="form-control">
+    </div>
+
+    <div class="flex-grow-1">
+        <label>Company</label>
+        <input class="form-control mb-2">
+
+        <label>Department</label>
+        <input class="form-control mb-2">
+
+        <label>Manager</label>
+        <input class="form-control mb-2">
+
+        <label>Location</label>
+        <input class="form-control">
+    </div>
+</div>
+</div>
+
+<!-- TABS -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#resume">Resume</button>
+    </li>
+    <li class="nav-item">
+        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#private">Private Info</button>
+    </li>
+    <li class="nav-item">
+        <button class="nav-link" id="salaryTab" data-bs-toggle="tab" data-bs-target="#salary">
+            Salary Info
+        </button>
+    </li>
+</ul>
+
+<div class="tab-content mt-3">
+
+<!-- RESUME -->
+<div class="tab-pane fade show active" id="resume">
+    <div class="card-box">
+        <h6>About</h6>
+        <textarea class="form-control" rows="3"></textarea>
+    </div>
+
+    <div class="card-box">
+        <h6>Skills</h6>
+        <input class="form-control">
+    </div>
+
+    <div class="card-box">
+        <h6>Certification</h6>
+        <input class="form-control">
+    </div>
+</div>
+
+<!-- PRIVATE INFO -->
+<div class="tab-pane fade" id="private">
+
+<div class="card-box">
+<h6>Personal Information</h6>
+
+<label>Date of Birth</label>
+<input type="date" class="form-control mb-2">
+
+<label>Gender</label>
+<select class="form-select mb-2">
+    <option></option><option>Male</option><option>Female</option><option>Other</option>
+</select>
+
+<label>Marital Status</label>
+<select class="form-select mb-2">
+    <option></option><option>Single</option><option>Married</option>
+</select>
+
+<label>Nationality</label>
+<input class="form-control mb-2">
+
+<label>Personal Email</label>
+<input class="form-control mb-2">
+
+<label>Residing Address</label>
+<textarea class="form-control mb-2"></textarea>
+
+<label>Date of Joining</label>
+<input type="date" class="form-control">
+</div>
+
+<div class="card-box">
+<h6>Bank Details</h6>
+
+<label>Account Number</label>
+<input class="form-control mb-2">
+
+<label>Bank Name</label>
+<input class="form-control mb-2">
+
+<label>IFSC Code</label>
+<input class="form-control mb-2">
+
+<label>PAN No</label>
+<input class="form-control mb-2">
+
+<label>UAN No</label>
+<input class="form-control mb-2">
+
+<label>Employee Code</label>
+<input class="form-control">
+</div>
+
+</div>
+
+<!-- SALARY INFO (EXPANDED AS IMAGE) -->
+<div class="tab-pane fade" id="salary">
+
+<div class="card-box">
+<div class="section-title">Salary Info</div>
+
+<label>Monthly Wage</label>
+<input class="form-control mb-2">
+
+<label>Yearly Wage</label>
+<input class="form-control mb-2">
+
+<label>No. of Working Days in a Week</label>
+<input class="form-control mb-2">
+
+<label>Break Time (hrs)</label>
+<input class="form-control">
+</div>
+
+<div class="card-box">
+<div class="section-title">Salary Components</div>
+
+<label>Basic Salary</label>
+<input class="form-control mb-2">
+
+<label>House Rent Allowance (HRA)</label>
+<input class="form-control mb-2">
+
+<label>Standard Allowance</label>
+<input class="form-control mb-2">
+
+<label>Performance Bonus</label>
+<input class="form-control mb-2">
+
+<label>Leave Travel Allowance (LTA)</label>
+<input class="form-control mb-2">
+
+<label>Fixed Allowance</label>
+<input class="form-control">
+</div>
+
+<div class="card-box">
+<div class="section-title">Provident Fund (PF) Contribution</div>
+
+<label>Employee PF</label>
+<input class="form-control mb-2">
+
+<label>Employer PF</label>
+<input class="form-control">
+</div>
+
+<div class="card-box">
+<div class="section-title">Tax Deductions</div>
+
+<label>Professional Tax</label>
+<input class="form-control">
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!-- RIGHT -->
+<div class="col-md-4">
+<div class="card-box">
+<h6>Work Details</h6>
+
+<label>Working Days / Week</label>
+<input class="form-control mb-2">
+
+<label>Break Time (hrs)</label>
+<input class="form-control">
+</div>
+</div>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="navigation.js"></script>
+
+<script>
+const isAdmin = true; // false = hide salary tab
+if(!isAdmin){
+    document.getElementById("salaryTab").style.display="none";
+}
+</script>
+
+</body>
+</html>
